@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arameyikha Light</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #0a0a0a;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        header {
+            position: relative;
+            background: linear-gradient(to right, #00c6ff, #0072ff);
+            padding: 20px;
+            text-align: center;
+            animation: glow 1s infinite alternate;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin: 0;
+            animation: flicker 1.5s infinite;
+        }
+
+        @keyframes glow {
+            0% { text-shadow: 0 0 5px #00c6ff, 0 0 10px #0072ff; }
+            100% { text-shadow: 0 0 20px #00c6ff, 0 0 30px #0072ff; }
+        }
+
+        @keyframes flicker {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .container {
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #0a0a0a;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            background: white;
+            color: black;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.5);
+            z-index: 1000;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+        }
+
+        button {
+            background-color: #00c6ff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #0072ff;
+        }
+
+        @media (max-width: 1024px) {
+            h1 { font-size: 2.5em; }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2em; }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 1.5em; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Arameyikha Light</h1>
+    <p>Self-Sustaining Electricity Powered by Eternal Love</p>
+</header>
+
+<div class="container">
+    <h2>Welcome to the Future of Energy!</h2>
+    <p>Experience the power of self-sustaining electricity. It's completely FREE! Join us to learn how you can have light forever.</p>
+    <button onclick="showPopup()">Join Us Now!</button>
+    
+    <div id="popup" class="popup">
+        <h3>Join the Movement!</h3>
+        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            <label for="name">Your Name:</label><br>
+            <input type="text" id="name" name="name" required><br><br>
+            <label for="email">Your Email:</label><br>
+            <input type="email" id="email" name="email" required><br><br>
+            <button type="submit">Submit</button>
+        </form>
+        <button onclick="hidePopup()">Close</button>
+    </div>
+
+    <div id="overlay" class="overlay" onclick="hidePopup()"></div>
+</div>
+
+<footer>
+    <p>Contact Us: support@arameyikhalight.com | Phone: 123-456-7890</p>
+    <p>Choose Eternal Love. Choose Light.</p>
+</footer>
+
+<script>
+    function showPopup() {
+        document.getElementById('popup').style.display = 'block';
+        document.getElementById('overlay').style.display = 'block';
+    }
+
+    function hidePopup() {
+        document.getElementById('popup').style.display = 'none';
+        document.getElementById('overlay').style.display = 'none';
+    }
+</script>
+
+</body>
+</html>
