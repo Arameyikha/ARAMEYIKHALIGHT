@@ -1,149 +1,323 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arameyikha Light</title>
+
+    <title>Free Self-Sustaining Electricity</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     <style>
+
         body {
-            font-family: Arial, sans-serif;
+
             margin: 0;
-            padding: 0;
-            background-color: #0a0a0a;
-            color: white;
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            min-height: 100vh;
             overflow-x: hidden;
+
         }
 
         header {
-            position: relative;
-            background: linear-gradient(to right, #00c6ff, #0072ff);
-            padding: 20px;
-            text-align: center;
-            animation: glow 1s infinite alternate;
+
+            margin: 20px 0;
+            animation: glow 1.5s infinite alternate;
+
         }
 
         h1 {
-            font-size: 3em;
-            margin: 0;
-            animation: flicker 1.5s infinite;
+
+            font-size: 2.5em;
+            text-shadow: 0 0 10px #fff, 0 0 20px #0ff;
+
         }
 
-        @keyframes glow {
-            0% { text-shadow: 0 0 5px #00c6ff, 0 0 10px #0072ff; }
-            100% { text-shadow: 0 0 20px #00c6ff, 0 0 30px #0072ff; }
+        .btn {
+
+            background-color: rgba(0, 255, 255, 0.466);
+            color: #000;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+            font-size: 2em;
+            z-index: 1;
+            opacity: 1;
+            transition: opacity 0.3s ease;
+
         }
 
-        @keyframes flicker {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
+        .btn:hover {
+
+            background-color: rgba(0, 128, 255, 0.8);
+            transform: scale(1.05);
+
         }
 
-        .container {
-            padding: 20px;
-            max-width: 1200px;
-            margin: auto;
-        }
+        #popup, #formPopup, #successPopup, #errorPopup {
 
-        footer {
-            text-align: center;
-            padding: 10px;
-            background-color: #0a0a0a;
-        }
-
-        .popup {
             display: none;
             position: fixed;
-            background: white;
-            color: black;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.5);
-            z-index: 1000;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.9);
+            color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 2;
+
         }
 
-        .overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 999;
+        #popup.show, #formPopup.show, #successPopup.show, #errorPopup.show {
+
+            display: block;
+            opacity: 1;
+
         }
 
-        button {
-            background-color: #00c6ff;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
+        .form-section {
+
+            margin-top: 20px;
+
+        }
+
+        input {
+
+            width: 90%;
+            margin: 5px 0;
+            padding: 10px;
             border-radius: 5px;
+            border: none;
+
         }
 
-        button:hover {
-            background-color: #0072ff;
+        .light-image {
+
+            margin: 20px 0;
+            width: 300px;
+            border: 5px solid #0ff;
+            border-radius: 15px;
+            animation: pulse 2s infinite;
+            box-shadow: 0 0 20px #0ff;
+            transition: transform 0.3s;
+            position: relative;
+
         }
 
-        @media (max-width: 1024px) {
-            h1 { font-size: 2.5em; }
+        .light-image:hover {
+
+            transform: scale(1.05);
+
         }
 
-        @media (max-width: 768px) {
-            h1 { font-size: 2em; }
+        @keyframes glow {
+
+            0% {
+                text-shadow: 0 0 10px #fff, 0 0 20px #0ff;
+            }
+            100% {
+                text-shadow: 0 0 20px #fff, 0 0 40px #0ff;
+            }
+            
         }
 
-        @media (max-width: 480px) {
-            h1 { font-size: 1.5em; }
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        footer {
+            margin-top: auto;
+            padding: 20px;
+            background: #222;
+            width: 100%;
+            text-align: center;
         }
     </style>
 </head>
+
 <body>
+    <header>
+        <h1>ARAMEYIKHA LIGHT</h1>
+        <p>Free Self-Sustaining Electricity</p>
+    </header>
 
-<header>
-    <h1>Arameyikha Light</h1>
-    <p>Self-Sustaining Electricity Powered by Eternal Love</p>
-</header>
-
-<div class="container">
-    <h2>Welcome to the Future of Energy!</h2>
-    <p>Experience the power of self-sustaining electricity. It's completely FREE! Join us to learn how you can have light forever.</p>
-    <button onclick="showPopup()">Join Us Now!</button>
-    
-    <div id="popup" class="popup">
-        <h3>Join the Movement!</h3>
-        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-            <label for="name">Your Name:</label><br>
-            <input type="text" id="name" name="name" required><br><br>
-            <label for="email">Your Email:</label><br>
-            <input type="email" id="email" name="email" required><br><br>
-            <button type="submit">Submit</button>
-        </form>
-        <button onclick="hidePopup()">Close</button>
+    <div style="position: relative;">
+        <img src="light.png" alt="Light" class="light-image">
+        <button class="btn" onclick="showPopup()" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">Join for FREE!</button>
     </div>
 
-    <div id="overlay" class="overlay" onclick="hidePopup()"></div>
-</div>
+    <div id="popup">
+        <h2>Welcome to ARAMEYIKHA LIGHT!</h2>
+        <p>Discover the beauty of self-sustaining electricity. Remember, electricity is actually light! Embrace ETERNAL LOVE and let us illuminate your life.</p>
+        <button class="btn" onclick="showFormPopup()">Continue</button>
+        <button class="btn" onclick="hidePopup()">Close</button>
+    </div>
 
-<footer>
-    <p>Contact Us: support@arameyikhalight.com | Phone: 123-456-7890</p>
-    <p>Choose Eternal Love. Choose Light.</p>
-</footer>
+    <div id="formPopup">
+        <h2>Join Us!</h2>
+        <p>Fill out the form below to get started:</p>
+        <div class="form-section">
+            <form id="joinForm" method="POST">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <input type="tel" name="phone" placeholder="Your Phone Number" required>
+                <input type="text" name="address" placeholder="Your Address" required>
+                <input type="text" name="details" placeholder="Additional Details" required>
+                <button type="button" class="btn" onclick="submitForm()">Submit</button>
+                <button type="button" class="btn" onclick="hideFormPopup()">Close</button>
+            </form>
+            <div id="formErrors" style="color: red; margin-top: 10px;"></div>
+        </div>
+    </div>
 
-<script>
-    function showPopup() {
-        document.getElementById('popup').style.display = 'block';
-        document.getElementById('overlay').style.display = 'block';
-    }
+    <div id="successPopup">
+        <h2>Thank You!</h2>
+        <p>Your information has been submitted successfully.</p>
+        <button class="btn" onclick="hideSuccessPopup()">Close</button>
+    </div>
 
-    function hidePopup() {
-        document.getElementById('popup').style.display = 'none';
-        document.getElementById('overlay').style.display = 'none';
-    }
-</script>
+    <div id="errorPopup">
+        <h2>Error!</h2>
+        <p id="errorMessage">An unexpected error occurred. Please try again.</p>
+        <button class="btn" onclick="hideErrorPopup()">Close</button>
+    </div>
 
+    <footer>
+        <p>&copy; 2024 ARAMEYIKHA LIGHT. All rights reserved.</p>
+    </footer>
+    
+    <script>
+        function showPopup() {
+            const button = document.querySelector('.btn');
+            button.style.opacity = '0';
+            setTimeout(() => {
+                button.style.display = 'none';
+                const popup = document.getElementById('popup');
+                popup.classList.add('show');
+            }, 300);
+        }
+
+        function hidePopup() {
+            const popup = document.getElementById('popup');
+            popup.classList.remove('show');
+            const button = document.querySelector('.btn');
+            button.style.opacity = '1';
+            button.style.display = 'block';
+        }
+
+        function showFormPopup() {
+            hidePopup();
+            const formPopup = document.getElementById('formPopup');
+            formPopup.classList.add('show');
+        }
+
+        function hideFormPopup() {
+            const formPopup = document.getElementById('formPopup');
+            formPopup.classList.remove('show');
+        }
+
+        function validateForm(form) {
+            let errors = [];
+            const name = form.name.value.trim();
+            const email = form.email.value.trim();
+            const phone = form.phone.value.trim();
+            const address = form.address.value.trim();
+            const details = form.details.value.trim();
+
+            if (!name) errors.push("Name is required.");
+            if (!email) errors.push("Email is required.");
+            if (!phone) errors.push("Phone number is required.");
+            if (!address) errors.push("Address is required.");
+            if (!details) errors.push("Additional details are required.");
+
+            return errors;
+        }
+
+        function submitForm() {
+            const form = document.getElementById('joinForm');
+            const errors = validateForm(form);
+            const errorDisplay = document.getElementById('formErrors');
+
+            if (errors.length > 0) {
+                errorDisplay.innerHTML = errors.join("<br>");
+                return;
+            } else {
+                errorDisplay.innerHTML = ""; // Clear previous errors
+            }
+
+            const formData = new FormData(form);
+            
+            // Send the data to Formspree
+            fetch('https://formspree.io/f/xbljrdbe', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    hideFormPopup();
+                    showSuccessPopup();
+                } else {
+                    throw new Error('Error submitting the form');
+                }
+            })
+            .catch(error => {
+                showErrorPopup("An error occurred while submitting your form. Please try again later.");
+                console.error('Form submission error:', error);
+            });
+        }
+
+        function showSuccessPopup() {
+            const successPopup = document.getElementById('successPopup');
+            successPopup.classList.add('show');
+        }
+
+        function hideSuccessPopup() {
+            const successPopup = document.getElementById('successPopup');
+            successPopup.classList.remove('show');
+        }
+
+        function showErrorPopup(message) {
+            const errorMessage = document.getElementById('errorMessage');
+            errorMessage.textContent = message;
+            const errorPopup = document.getElementById('errorPopup');
+            errorPopup.classList.add('show');
+        }
+
+        function hideErrorPopup() {
+            const errorPopup = document.getElementById('errorPopup');
+            errorPopup.classList.remove('show');
+        }
+    </script>
 </body>
+
 </html>
