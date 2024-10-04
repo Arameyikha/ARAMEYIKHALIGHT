@@ -137,10 +137,11 @@
             100% {
                 text-shadow: 0 0 20px #fff, 0 0 40px #0ff;
             }
-            
+
         }
 
         @keyframes pulse {
+
             0% {
                 transform: scale(1);
             }
@@ -150,41 +151,58 @@
             100% {
                 transform: scale(1);
             }
+
         }
 
         footer {
+
             margin-top: auto;
             padding: 20px;
             background: #222;
             width: 100%;
             text-align: center;
+
         }
+
     </style>
+
 </head>
 
 <body>
+
     <header>
+
         <h1>ARAMEYIKHA LIGHT</h1>
-        <p>Free Self-Sustaining Electricity</p>
+
+        <p>Self-Sustaining Electricity</p>
+
     </header>
 
     <div style="position: relative;">
+
         <img src="light.png" alt="Light" class="light-image">
         <button class="btn" onclick="showPopup()" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">Join for FREE!</button>
+
     </div>
 
     <div id="popup">
+
         <h2>Welcome to ARAMEYIKHA LIGHT!</h2>
-        <p>Discover the beauty of self-sustaining electricity. Remember, electricity is actually light! Embrace ETERNAL LOVE and let us illuminate your life.</p>
-        <button class="btn" onclick="showFormPopup()">Continue</button>
-        <button class="btn" onclick="hidePopup()">Close</button>
+        <p>Discover the beauty of self-sustaining electricity. LIGHT. It's not actually electricity, but it's Light. Oh, and it's also free. We'll install everything for you completely free. Say goodbye to electricity, and say hello to light. you don't have to pay a single cent.</p>
+        <button class="btn" style="font-size: 20px;" onclick="showFormPopup()">Continue</button>
+        <button class="btn" style="font-size: 20px;" onclick="hidePopup()">Close</button>
     </div>
 
     <div id="formPopup">
+
         <h2>Join Us!</h2>
-        <p>Fill out the form below to get started:</p>
+
+        <p>Fill out the form below to join:</p>
+
         <div class="form-section">
+
             <form id="joinForm" method="POST">
+
                 <input type="text" name="name" placeholder="Your Name" required>
                 <input type="email" name="email" placeholder="Your Email" required>
                 <input type="tel" name="phone" placeholder="Your Phone Number" required>
@@ -192,29 +210,45 @@
                 <input type="text" name="details" placeholder="Additional Details" required>
                 <button type="button" class="btn" onclick="submitForm()">Submit</button>
                 <button type="button" class="btn" onclick="hideFormPopup()">Close</button>
+
             </form>
+
             <div id="formErrors" style="color: red; margin-top: 10px;"></div>
+
         </div>
+
     </div>
 
     <div id="successPopup">
+
         <h2>Thank You!</h2>
+
         <p>Your information has been submitted successfully.</p>
+
         <button class="btn" onclick="hideSuccessPopup()">Close</button>
+
     </div>
 
     <div id="errorPopup">
+
         <h2>Error!</h2>
+
         <p id="errorMessage">An unexpected error occurred. Please try again.</p>
+
         <button class="btn" onclick="hideErrorPopup()">Close</button>
+
     </div>
 
     <footer>
+
         <p>&copy; 2024 ARAMEYIKHA LIGHT. All rights reserved.</p>
+
     </footer>
     
     <script>
+
         function showPopup() {
+
             const button = document.querySelector('.btn');
             button.style.opacity = '0';
             setTimeout(() => {
@@ -222,28 +256,36 @@
                 const popup = document.getElementById('popup');
                 popup.classList.add('show');
             }, 300);
+
         }
 
         function hidePopup() {
+
             const popup = document.getElementById('popup');
             popup.classList.remove('show');
             const button = document.querySelector('.btn');
             button.style.opacity = '1';
             button.style.display = 'block';
+
         }
 
         function showFormPopup() {
+
             hidePopup();
             const formPopup = document.getElementById('formPopup');
             formPopup.classList.add('show');
+
         }
 
         function hideFormPopup() {
+
             const formPopup = document.getElementById('formPopup');
             formPopup.classList.remove('show');
+
         }
 
         function validateForm(form) {
+
             let errors = [];
             const name = form.name.value.trim();
             const email = form.email.value.trim();
@@ -258,66 +300,93 @@
             if (!details) errors.push("Additional details are required.");
 
             return errors;
+
         }
 
         function submitForm() {
+
             const form = document.getElementById('joinForm');
             const errors = validateForm(form);
             const errorDisplay = document.getElementById('formErrors');
 
             if (errors.length > 0) {
+
                 errorDisplay.innerHTML = errors.join("<br>");
                 return;
             } else {
+
                 errorDisplay.innerHTML = ""; // Clear previous errors
+
             }
 
             const formData = new FormData(form);
             
             // Send the data to Formspree
             fetch('https://formspree.io/f/xbljrdbe', {
+
                 method: 'POST',
                 body: formData,
                 headers: {
                     'Accept': 'application/json'
                 }
+
             })
+
             .then(response => {
+
                 if (response.ok) {
+
                     hideFormPopup();
                     showSuccessPopup();
                 } else {
+
                     throw new Error('Error submitting the form');
+
                 }
+
             })
+
             .catch(error => {
+
                 showErrorPopup("An error occurred while submitting your form. Please try again later.");
                 console.error('Form submission error:', error);
+
             });
+
         }
 
         function showSuccessPopup() {
+
             const successPopup = document.getElementById('successPopup');
             successPopup.classList.add('show');
+
         }
 
         function hideSuccessPopup() {
+
             const successPopup = document.getElementById('successPopup');
             successPopup.classList.remove('show');
+
         }
 
         function showErrorPopup(message) {
+
             const errorMessage = document.getElementById('errorMessage');
             errorMessage.textContent = message;
             const errorPopup = document.getElementById('errorPopup');
             errorPopup.classList.add('show');
+
         }
 
         function hideErrorPopup() {
+
             const errorPopup = document.getElementById('errorPopup');
             errorPopup.classList.remove('show');
+
         }
+
     </script>
+    
 </body>
 
 </html>
